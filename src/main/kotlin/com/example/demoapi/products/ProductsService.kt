@@ -5,9 +5,7 @@ import org.springframework.stereotype.Service
 @Service
 class ProductsService {
 
-    fun create(product: Product): Product {
-        return product
-    }
+    fun create(product: Product): Product = product
 
     fun list(): List<Product> {
         val products = mutableListOf<Product>()
@@ -16,9 +14,7 @@ class ProductsService {
     }
 
     fun read(id: Int): Product? {
-        if (listOf(1,2).contains(id)) {
-            return fakeProduct(id)
-        }
+        if (listOf(1,2).contains(id)) { return fakeProduct(id) }
         return null
     }
 

@@ -3,6 +3,7 @@ package com.example.demoapi.products
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder
+import java.net.URI
 
 @RequestMapping("/products")
 @RestController
@@ -11,18 +12,12 @@ class ProductsController(private val service: ProductsService) {
     @PostMapping
     fun create(@RequestBody product: Product): ResponseEntity<Any> {
         val created = service.create(product)
-        val uri = ServletUriComponentsBuilder
-                .fromCurrentRequest()
-                .path("/{id}")
-                .buildAndExpand(created.id)
-                .toUri()
-        return ResponseEntity.created(uri).build()
+        return ResponseEntity.created(buildURI(created.id)).build()
     }
 
     @GetMapping()
     fun list(): ResponseEntity<Any> {
-        val products = service.list()
-        return ResponseEntity.ok(products)
+        return ResponseEntity.ok(service.list())
     }
 
     @GetMapping("/{id}")
@@ -42,4 +37,10 @@ class ProductsController(private val service: ProductsService) {
         service.delete(id)
         return ResponseEntity.ok().build()
     }
+
+    private fun buildURI(id: Int):URI = ServletUriComponentsBuilder
+        .fromCurrentRequest()
+        .path("/{id}")
+        .buildAndExpand(id)
+        .toUri()
 }
