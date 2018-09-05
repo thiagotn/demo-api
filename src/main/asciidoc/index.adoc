@@ -1,5 +1,5 @@
 = Demo API
-
+thiagotn@gmail.com
 :toc: left
 
 == Introduction
@@ -7,10 +7,6 @@
 This Demo API is intended to make it easy for you to understand how to use Spring REST Docs to produce high-quality documentation for your RESTful services.
 
 == Resources
-
-=== Products
-
-Resources to manage Products API
 
 ==== Create Product
 
