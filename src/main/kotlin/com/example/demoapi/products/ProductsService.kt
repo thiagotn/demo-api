@@ -14,15 +14,17 @@ class ProductsService {
     }
 
     fun read(id: Int): Product? {
-        if (listOf(1,2).contains(id)) { return fakeProduct(id) }
-        return null
+        return when (id) {
+            1,2 -> fakeProduct(id)
+            else -> null
+        }
     }
 
     fun update(product: Product): Product? {
-        if (listOf(1,2).contains(product.id)) {
-            return product
+        return when (product.id) {
+            1,2 -> product
+            else -> null
         }
-        return null
     }
 
     fun delete(id: String) {

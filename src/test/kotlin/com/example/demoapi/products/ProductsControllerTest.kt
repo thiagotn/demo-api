@@ -82,5 +82,5 @@ class ProductsControllerTest {
 
     }
 
-    fun json(any: Any): String = mapper.writeValueAsString(any)
+    private fun json(any: Any): String = mapper.writeValueAsString(any)
 }
