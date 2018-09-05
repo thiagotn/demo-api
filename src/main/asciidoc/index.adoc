@@ -1,0 +1,42 @@
+= Demo API
+
+:toc: left
+
+== Introduction
+
+This Demo API is intended to make it easy for you to understand how to use Spring REST Docs to produce high-quality documentation for your RESTful services.
+
+== Resources
+
+=== Products
+
+Resources to manage Products API
+
+==== Create Product
+
+.curl request
+include::{snippets}/ProductsControllerTest/shouldCreateProduct/curl-request.adoc[]
+
+.request
+include::{snippets}/ProductsControllerTest/shouldCreateProduct/http-request.adoc[]
+
+.response
+include::{snippets}/ProductsControllerTest/shouldCreateProduct/http-response.adoc[]
+
+.httpie request
+include::{snippets}/ProductsControllerTest/shouldCreateProduct/httpie-request.adoc[]
+
+.request body
+include::{snippets}/ProductsControllerTest/shouldCreateProduct/request-body.adoc[]
+
+.request fields
+include::{snippets}/ProductsControllerTest/shouldCreateProduct/request-fields.adoc[]
+
+.response body
+include::{snippets}/ProductsControllerTest/shouldCreateProduct/response-body.adoc[]
+
+
+== Contributions
+
+This Demo API is intended to make it easy for you to understand how to use Spring REST Docs to produce high-quality documentation for your RESTful services. However, we can’t achieve that goal without your contributions.
+Feel free to contribute to this repo (https://github.com/thiagotn/demo-api/), sending pull requests any time :)
