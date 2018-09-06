@@ -9,13 +9,13 @@ class ProductsService {
 
     fun list(): List<Product> {
         val products = mutableListOf<Product>()
-        for (i in 1..2) { products.add(fakeProduct(i)) }
+        for (i in 1..2) { products.add(mockProduct(i)) }
         return products
     }
 
     fun read(id: Int): Product? {
         return when (id) {
-            1,2 -> fakeProduct(id)
+            1,2 -> mockProduct(id)
             else -> null
         }
     }
@@ -31,5 +31,5 @@ class ProductsService {
 
     }
 
-    private fun fakeProduct(id: Int): Product = Product(id = id, name = "Book Kotlin for Android Developers - ${id}st Edition", description = "Kotlin for Android Developers - ${id}st Edition: Learn Kotlin the easy way while developing an Android App")
+    private fun mockProduct(id: Int): Product = Product(id = id, name = "Book Kotlin for Android Developers - ${id}st Edition", description = "Kotlin for Android Developers - ${id}st Edition: Learn Kotlin the easy way while developing an Android App")
 }
