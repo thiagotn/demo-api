@@ -71,6 +71,26 @@ include::{snippets}/ProductsControllerTest/shouldReadProduct/response-body.adoc[
 .response fields
 include::{snippets}/ProductsControllerTest/shouldReadProduct/response-fields.adoc[]
 
+=== Update Product
+
+.curl request
+include::{snippets}/ProductsControllerTest/shouldUpdateProduct/curl-request.adoc[]
+
+.request
+include::{snippets}/ProductsControllerTest/shouldUpdateProduct/http-request.adoc[]
+
+.response
+include::{snippets}/ProductsControllerTest/shouldUpdateProduct/http-response.adoc[]
+
+.httpie request
+include::{snippets}/ProductsControllerTest/shouldUpdateProduct/httpie-request.adoc[]
+
+.response body
+include::{snippets}/ProductsControllerTest/shouldUpdateProduct/response-body.adoc[]
+
+.response fields
+include::{snippets}/ProductsControllerTest/shouldUpdateProduct/response-fields.adoc[]
+
 === Delete Product
 
 .curl request

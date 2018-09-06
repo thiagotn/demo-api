@@ -121,9 +121,19 @@ class ProductsControllerTest {
                 .andExpect(status().isOk)
     }
 
-    @Test @Ignore
+    @Test
     fun shouldUpdateProduct() {
-        // TODO
+        val product = mockProduct(1)
+        `when`(service.update(product)).thenReturn(product)
+        mockMvc.perform(patch("/products")
+                .accept(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(json(product)))
+                .andDo(print())
+                .andDo(document("{ClassName}/{methodName}",
+                        preprocessRequest(prettyPrint()),
+                        preprocessResponse(prettyPrint())))
+                .andExpect(status().isOk)
     }
 
     @Test
