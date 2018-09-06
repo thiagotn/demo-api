@@ -2,6 +2,7 @@ package com.example.demoapi.products
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.junit.Before
+import org.junit.Ignore
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -16,10 +17,10 @@ import org.springframework.restdocs.JUnitRestDocumentation
 import org.springframework.restdocs.mockmvc.MockMvcRestDocumentation
 import org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document
 import org.springframework.restdocs.operation.preprocess.Preprocessors.*
-import org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath
-import org.springframework.restdocs.payload.PayloadDocumentation.requestFields
+import org.springframework.restdocs.payload.PayloadDocumentation.*
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner
 import org.springframework.test.web.servlet.MockMvc
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers.print
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
@@ -82,5 +83,47 @@ class ProductsControllerTest {
 
     }
 
+    @Test
+    fun shouldListProducts() {
+        val products = mockProducts()
+        `when`(service.list()).thenReturn(products)
+        mockMvc.perform(get("/products")
+                .accept(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andDo(document("{ClassName}/{methodName}",
+                        preprocessRequest(prettyPrint()),
+                        preprocessResponse(prettyPrint()),
+                        responseFields(
+                                fieldWithPath("[].id").description("Product Identifier"),
+                                fieldWithPath("[].name").description("Product Name"),
+                                fieldWithPath("[].description").description("Product Description")
+                        )))
+                .andExpect(status().isOk)
+    }
+
+    @Test @Ignore
+    fun shouldReadProduct() {
+        // TODO
+    }
+
+    @Test @Ignore
+    fun shouldUpdateProduct() {
+        // TODO
+    }
+
+    @Test @Ignore
+    fun shouldDeleteProduct() {
+        // TODO
+    }
+
+    private fun mockProducts(): List<Product> {
+        val products = mutableListOf<Product>()
+        for (i in 1..2) { products.add(mockProduct(i)) }
+        return products
+    }
+
     private fun json(any: Any): String = mapper.writeValueAsString(any)
+
+    private fun mockProduct(id: Int): Product = Product(id = id, name = "Book Kotlin for Android Developers - ${id}st Edition", description = "Kotlin for Android Developers - ${id}st Edition: Learn Kotlin the easy way while developing an Android App")
 }

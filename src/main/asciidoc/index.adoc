@@ -31,6 +31,23 @@ include::{snippets}/ProductsControllerTest/shouldCreateProduct/request-fields.ad
 .response body
 include::{snippets}/ProductsControllerTest/shouldCreateProduct/response-body.adoc[]
 
+==== List Products
+
+.curl request
+include::{snippets}/ProductsControllerTest/shouldListProducts/curl-request.adoc[]
+
+.request
+include::{snippets}/ProductsControllerTest/shouldListProducts/http-request.adoc[]
+
+.response
+include::{snippets}/ProductsControllerTest/shouldListProducts/http-response.adoc[]
+
+.httpie request
+include::{snippets}/ProductsControllerTest/shouldListProducts/httpie-request.adoc[]
+
+.response body
+include::{snippets}/ProductsControllerTest/shouldListProducts/response-body.adoc[]
+
 
 == Contributions
 
