@@ -27,7 +27,7 @@ class ProductsService {
         }
     }
 
-    fun delete(id: String) {
+    fun delete(id: Int) {
 
     }
 

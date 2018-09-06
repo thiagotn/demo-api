@@ -7,6 +7,7 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mockito.`when`
+import org.mockito.Mockito.doNothing
 import org.mockito.MockitoAnnotations
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs
@@ -20,8 +21,7 @@ import org.springframework.restdocs.operation.preprocess.Preprocessors.*
 import org.springframework.restdocs.payload.PayloadDocumentation.*
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner
 import org.springframework.test.web.servlet.MockMvc
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers.print
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 import org.springframework.test.web.servlet.setup.DefaultMockMvcBuilder
@@ -102,9 +102,23 @@ class ProductsControllerTest {
                 .andExpect(status().isOk)
     }
 
-    @Test @Ignore
+    @Test
     fun shouldReadProduct() {
-        // TODO
+        val product = mockProduct(1)
+        `when`(service.read(product.id)).thenReturn(product)
+        mockMvc.perform(get("/products/{id}", 1)
+                .accept(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andDo(document("{ClassName}/{methodName}",
+                        preprocessRequest(prettyPrint()),
+                        preprocessResponse(prettyPrint()),
+                        responseFields(
+                                fieldWithPath("id").description("Product Identifier"),
+                                fieldWithPath("name").description("Product Name"),
+                                fieldWithPath("description").description("Product Description")
+                        )))
+                .andExpect(status().isOk)
     }
 
     @Test @Ignore
@@ -112,9 +126,18 @@ class ProductsControllerTest {
         // TODO
     }
 
-    @Test @Ignore
+    @Test
     fun shouldDeleteProduct() {
-        // TODO
+        val product = mockProduct(1)
+        doNothing().`when`(service).delete(product.id)
+        mockMvc.perform(delete("/products/{id}", 1)
+                .accept(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andDo(document("{ClassName}/{methodName}",
+                        preprocessRequest(prettyPrint()),
+                        preprocessResponse(prettyPrint())))
+                .andExpect(status().isOk)
     }
 
     private fun mockProducts(): List<Product> {

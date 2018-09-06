@@ -33,7 +33,7 @@ class ProductsController(private val service: ProductsService) {
     }
 
     @DeleteMapping("/{id}")
-    fun delete(@PathVariable id: String): ResponseEntity<Any> {
+    fun delete(@PathVariable id: Int): ResponseEntity<Any> {
         service.delete(id)
         return ResponseEntity.ok().build()
     }

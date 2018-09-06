@@ -8,7 +8,7 @@ This Demo API is intended to make it easy for you to understand how to use Sprin
 
 == Resources
 
-==== Create Product
+=== Create Product
 
 .curl request
 include::{snippets}/ProductsControllerTest/shouldCreateProduct/curl-request.adoc[]
@@ -31,7 +31,7 @@ include::{snippets}/ProductsControllerTest/shouldCreateProduct/request-fields.ad
 .response body
 include::{snippets}/ProductsControllerTest/shouldCreateProduct/response-body.adoc[]
 
-==== List Products
+=== List Products
 
 .curl request
 include::{snippets}/ProductsControllerTest/shouldListProducts/curl-request.adoc[]
@@ -48,6 +48,42 @@ include::{snippets}/ProductsControllerTest/shouldListProducts/httpie-request.ado
 .response body
 include::{snippets}/ProductsControllerTest/shouldListProducts/response-body.adoc[]
 
+.response fields
+include::{snippets}/ProductsControllerTest/shouldListProducts/response-fields.adoc[]
+
+=== Read Product
+
+.curl request
+include::{snippets}/ProductsControllerTest/shouldReadProduct/curl-request.adoc[]
+
+.request
+include::{snippets}/ProductsControllerTest/shouldReadProduct/http-request.adoc[]
+
+.response
+include::{snippets}/ProductsControllerTest/shouldReadProduct/http-response.adoc[]
+
+.httpie request
+include::{snippets}/ProductsControllerTest/shouldReadProduct/httpie-request.adoc[]
+
+.response body
+include::{snippets}/ProductsControllerTest/shouldReadProduct/response-body.adoc[]
+
+.response fields
+include::{snippets}/ProductsControllerTest/shouldReadProduct/response-fields.adoc[]
+
+=== Delete Product
+
+.curl request
+include::{snippets}/ProductsControllerTest/shouldDeleteProduct/curl-request.adoc[]
+
+.request
+include::{snippets}/ProductsControllerTest/shouldDeleteProduct/http-request.adoc[]
+
+.response
+include::{snippets}/ProductsControllerTest/shouldDeleteProduct/http-response.adoc[]
+
+.httpie request
+include::{snippets}/ProductsControllerTest/shouldDeleteProduct/httpie-request.adoc[]
 
 == Contributions
 
